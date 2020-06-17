@@ -30,7 +30,8 @@ class Search extends Component {
     const { searchTitle } = this.state
     if (searchTitle) {
       this.props.getMovies({
-        t: searchTitle
+        s: searchTitle,
+        type: 'movie'
       })
     }
   }
