@@ -3,6 +3,9 @@ import Layout from '../../components/Layout'
 import { MyContentStyle } from './index.style'
 import { DisplayFlex } from '../../styles/commonStyle'
 import NoContent from '../../components/NoContent'
+import { getFromCookie } from '../../utility/cookies'
+import { SAVE_CONTENT } from '../../images'
+import { SAVE_MY_CONTENT } from '../../constants/cookies'
 
 class MyContent extends Component {
   state = {
@@ -21,6 +24,7 @@ class MyContent extends Component {
         type: 'watched' 
       }
     ]
+    this.myContent = getFromCookie(SAVE_MY_CONTENT)
   }
 
   handleActiveTab = (tab) => {
