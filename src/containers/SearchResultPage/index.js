@@ -3,11 +3,12 @@ import Layout from '../../components/Layout'
 import { connect } from 'react-redux'
 import movieActions from '../../redux/movies/actions'
 import { SearhResultStyle, PagenationContainer } from './index.style'
-import { getDataFromPropsState } from '../../utility/helper'
+import { getDataFromPropsState, getQueryString, getObjFromQueryString } from '../../utility/helper'
 import MoviesDetailCard from '../../components/MoviesDetailCard'
 import Pagination from '../../components/Pagination'
+import Loader from '../../components/Loader'
 
-const { getMovies } = movieActions
+const { getMovies, resetMoviesStore } = movieActions
 
 class SearhResultPage extends Component {
   constructor (props) {
@@ -24,28 +25,45 @@ class SearhResultPage extends Component {
     }
   }
 
+  componentWillReceiveProps (nextProps) {
+    const { movieStatus, moviesData, resetMoviesStore } = nextProps
+    if (movieStatus === 'success') {
+      this.setState({
+        moviesData
+      })
+      resetMoviesStore(['movieStatus'])
+    }
+  }
+
   handlePageChange = (e) => {
     this.setState({
-      selected: e.selected
+      selectedPage: (e.selected + 1)
+    }, () => {
+      const obj = getObjFromQueryString(window.location.search)
+      this.props.getMovies({
+        ...obj,
+        page: this.state.selectedPage
+      })
     })
   }
 
   render () {
     const { moviesData } = this.state
-    const { Search: searchData = [] } = moviesData
-    console.log(searchData)
+    const { Search: searchData = [], totalResults = 0} = moviesData
     return (
       <Layout>
-        <SearhResultStyle>
-          {
-            searchData.map(item => (
-              <MoviesDetailCard key={item.imdbID} movie={item} />
-            ))
-          }
-        </SearhResultStyle>
-        <PagenationContainer>
-          <Pagination onPageChange={this.handlePageChange} totalPages={10} />
-        </PagenationContainer>
+        <Loader isLoader={this.props.moviesLoading}>
+          <SearhResultStyle>
+            {
+              searchData.map(item => (
+                <MoviesDetailCard key={item.imdbID} movie={item} />
+              ))
+            }
+          </SearhResultStyle>
+          <PagenationContainer>
+            <Pagination onPageChange={this.handlePageChange} totalPages={Math.ceil(totalResults/10)} />
+          </PagenationContainer>
+        </Loader>
       </Layout>
     )
   }
@@ -54,9 +72,11 @@ class SearhResultPage extends Component {
 export default connect(
   state => ({
     movieStatus: state.Movie.movieStatus,
+    moviesData: state.Movie.moviesData,
     moviesLoading: state.Loading.GET_MOVIE
   }),
   {
-    getMovies
+    getMovies,
+    resetMoviesStore
   }
 )(SearhResultPage)

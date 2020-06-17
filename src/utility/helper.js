@@ -7,3 +7,8 @@ export function getDataFromPropsState (key) {
 export function getQueryString (data) {
   return Object.keys(data).map(key => `${key}=${data[key]}`).join('&')
 }
+
+export function getObjFromQueryString (params) {
+  const urlParams = new URLSearchParams(params)
+  return Object.fromEntries(urlParams)
+}
