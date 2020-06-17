@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 export const PaginationStyle = styled.div`
+  max-width: 100%;
+
   .page-link-container {
     width: 40px;
     height: 40px;
@@ -71,5 +73,29 @@ export const PaginationStyle = styled.div`
   .pagination > li > a, .pagination > li > span{
     color: ${props => props.theme.white};
     font-weight: 800;
+  }
+
+  @media (min-height: 320px) and (max-height: 736px) {
+    .page-link-container {
+      margin: 3px;
+    }
+  }
+
+  
+  @media (min-width: 320px) and (max-width: 640px) {
+    .page-link-container {
+      margin: 3px;
+    }
+  }
+
+  @media (width: 320px) {
+    .page-link-container {
+      margin: 0px;
+    }
+
+    .pagination > li > a {
+      width: 30px;
+      height: 30px;
+    }
   }
 `

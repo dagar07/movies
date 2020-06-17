@@ -16,4 +16,17 @@ export const SearchStyle = styled(DisplayFlex)`
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
   }
+
+  @media (min-height: 320px) and (max-height: 736px) {
+    width: 90%;
+  }
+
+  
+  @media (min-width: 320px) and (max-width: 640px) {
+    width: 90%;
+  }
+
+  @media (width: 320px) {
+    width: 90%;
+  }
 `

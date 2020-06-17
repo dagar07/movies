@@ -42,4 +42,14 @@ export const MoviesCardStyle = styled.div`
     color: ${props => props.theme.darkerGrey};
     text-transform: capitalize;
   }
+
+  @media (min-height: 320px) and (max-height: 736px) {
+    position: relative;
+    width: 100%;
+  }
+
+  @media (min-width: 320px) and (max-width: 640px) {
+    position: relative;
+    width: 100%;
+  }
 `

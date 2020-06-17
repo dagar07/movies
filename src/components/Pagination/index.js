@@ -23,7 +23,7 @@ class Pagination extends Component {
           breakLabel='...'
           pageCount={totalPages}
           breakClassName='break-me'
-          marginPagesDisplayed={3}
+          marginPagesDisplayed={1}
           pageRangeDisplayed={3}
           onPageChange={this.handlePagination}
           containerClassName='pagination'
