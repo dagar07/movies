@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import Layout from '../../components/Layout'
 import { connect } from 'react-redux'
 import movieActions from '../../redux/movies/actions'
-import { SearhResultStyle } from './index.style'
+import { SearhResultStyle, PagenationContainer } from './index.style'
 import { getDataFromPropsState } from '../../utility/helper'
 import MoviesDetailCard from '../../components/MoviesDetailCard'
+import Pagination from '../../components/Pagination'
 
 const { getMovies } = movieActions
 
@@ -23,6 +24,12 @@ class SearhResultPage extends Component {
     }
   }
 
+  handlePageChange = (e) => {
+    this.setState({
+      selected: e.selected
+    })
+  }
+
   render () {
     const { moviesData } = this.state
     const { Search: searchData = [] } = moviesData
@@ -36,6 +43,9 @@ class SearhResultPage extends Component {
             ))
           }
         </SearhResultStyle>
+        <PagenationContainer>
+          <Pagination onPageChange={this.handlePageChange} totalPages={10} />
+        </PagenationContainer>
       </Layout>
     )
   }
