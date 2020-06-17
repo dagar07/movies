@@ -18,7 +18,8 @@ class MoviesDetailCard extends Component {
           <div className='movie-title'>{movie.Title}</div>
           <DisplayFlex>
             <span className='movie-subdetail'>{movie.Year}</span>
-            <span className='movie-subdetail'>{movie.type}</span>
+            &nbsp;&bull;&nbsp;
+            <span className='movie-subdetail'>{movie.Type}</span>
           </DisplayFlex>
         </div>
       </MoviesCardStyle>
