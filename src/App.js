@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 import { store, history } from './redux/store'
 import AppRoutes from './router'
 import AppContainer from './index.style'
+import './index.css'
 
 const App = () => (
   <AppContainer>

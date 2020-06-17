@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const AppStyle = styled.div`
-  font-family: Ariel;
+  font-family: 'Roboto', sans-serif;
   h1,
   h2,
   h3,

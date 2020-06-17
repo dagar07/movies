@@ -5,7 +5,8 @@ import { Route, Redirect, Switch, Router } from 'react-router-dom'
 import { COLOR } from './styles/colors'
 
 const APP_ROUTES = {
-  home: lazy(() => import('./containers/home'))
+  home: lazy(() => import('./containers/home')),
+  searchPage: lazy(() => import('./containers/SearchResultPage'))
 }
 
 // const RestrictedRoute = ({ component: Component, isLoggedIn, ...rest }) => {
@@ -37,6 +38,7 @@ function AppRoutes ({ history, isLoggedIn }) {
         <Suspense fallback='Loading...'>
           <Switch>
             <Route exact path='/' component={APP_ROUTES.home} />
+            <Route path='/search' component={APP_ROUTES.searchPage} />
             <Redirect to='/' />
           </Switch>
         </Suspense>

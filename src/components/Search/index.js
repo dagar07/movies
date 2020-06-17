@@ -4,12 +4,11 @@ import { SearchStyle } from './index.style'
 import Input from '../Input'
 import Button from '../Button'
 import { connect } from 'react-redux'
-import movieActions from '../../redux/movies/actions'
 
-const { getMovies } = movieActions
 class Search extends Component {
   static propTypes = {
-    className: PropTypes.string
+    className: PropTypes.string,
+    onSearhAction: PropTypes.func
   }
 
   state = {
@@ -29,9 +28,8 @@ class Search extends Component {
   handleSearchMovies = () => {
     const { searchTitle } = this.state
     if (searchTitle) {
-      this.props.getMovies({
+      this.props.onSearhAction({
         s: searchTitle,
-        type: 'movie'
       })
     }
   }
@@ -54,10 +52,6 @@ class Search extends Component {
 }
 
 export default connect(
-  state => ({
-
-  }),
-  {
-    getMovies
-  }
+  state => ({}),
+  {}
 )(Search)
