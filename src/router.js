@@ -37,7 +37,6 @@ function AppRoutes ({ history, isLoggedIn }) {
         <Suspense fallback='Loading...'>
           <Switch>
             <Route exact path='/' component={APP_ROUTES.home} />
-            {/* <RestrictedRoute path='/user/list' component={APP_ROUTES.userList} isLoggedIn={isLoggedIn} /> */}
             <Redirect to='/' />
           </Switch>
         </Suspense>

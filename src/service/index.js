@@ -15,10 +15,10 @@ export const postRequest = ({ url = '', body = {}, headers = {} }) => {
     })
 }
 
-export const getRequest = ({ url = '', query = '', headers = {} }) => {
+export const getRequest = ({ url = '', query = '', params = {}, headers = {} }) => {
   const finalUrl = query ? `${url}${query}` : url
   return axios
-    .get(finalUrl, { headers })
+    .get(finalUrl, { headers, params })
     .catch(error => {
       if (error.response) {
         throw error.response
