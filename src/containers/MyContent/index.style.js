@@ -12,4 +12,8 @@ export const MyContentStyle = styled.div`
     color: ${props => props.theme.white};
     font-weight: 700;
   }
+
+  .content-container {
+    flex-wrap: wrap;
+  }
 `

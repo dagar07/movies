@@ -22,6 +22,12 @@ export const MoviesCardStyle = styled.div`
     color: ${props => props.theme.white};
   }
 
+  .add-to-watched {
+    font-size: 12px;
+    font-weight: 800;
+    color: ${props => props.theme.white};
+  }
+
   .movie-title {
     font-size: 16px;
     font-weight: 800;
@@ -32,8 +38,8 @@ export const MoviesCardStyle = styled.div`
   }
 
   .movie-subdetail {
-    font-size: 12px;
-    color: ${props => props.theme.white};
+    font-size: 10px;
+    color: ${props => props.theme.darkerGrey};
     text-transform: capitalize;
   }
 `
