@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const LoaderStyle = styled.div`
-  background-color: ${props => props.theme.lightGrey};
+  background-color: ${props => props.theme.loaderBg};
   position: relative;
 
   .loader-container {

@@ -3,6 +3,7 @@ export const COLOR = {
   secondary: '#566573',
   homeBg: '#1b2938',
   headerBg: '#152029',
+  loaderBg: '#675f5f00',
   white: '#ffffff',
   black: '#000000',
   grey: '#aaaaaa',

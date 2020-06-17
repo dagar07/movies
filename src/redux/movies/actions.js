@@ -1,4 +1,4 @@
-const actions = {
+const movieActions = {
   GET_MOVIE_REQUEST: 'GET_MOVIE_REQUEST',
   GET_MOVIE_SUCCESS: 'GET_MOVIE_SUCCESS',
   GET_MOVIE_FAILURE: 'GET_MOVIE_FAILURE',
@@ -6,13 +6,13 @@ const actions = {
   RESET_MOVIE_STORE: 'RESET_MOVIE_STORE',
 
   getMovies: payload => ({
-    type: actions.GET_MOVIE_REQUEST,
+    type: movieActions.GET_MOVIE_REQUEST,
     payload
   }),
   resetMoviesStore: payload => ({
-    type: actions.RESET_MOVIE_STORE,
+    type: movieActions.RESET_MOVIE_STORE,
     payload
   })
 }
 
-export default actions
+export default movieActions
