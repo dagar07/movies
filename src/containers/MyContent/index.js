@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Layout from '../../components/Layout'
 import { MyContentStyle } from './index.style'
 import { DisplayFlex } from '../../styles/commonStyle'
+import NoContent from '../../components/NoContent'
 
 class MyContent extends Component {
   state = {
@@ -44,6 +45,9 @@ class MyContent extends Component {
               ))
             }
           </DisplayFlex>
+          <NoContent
+            title='You do not have any Content for watch'
+          />
         </MyContentStyle>
       </Layout>
     )
