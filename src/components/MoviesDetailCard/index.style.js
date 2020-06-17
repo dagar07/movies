@@ -10,6 +10,7 @@ export const MoviesCardStyle = styled.div`
   height: 190px;
   margin: 10px;
   position: relative;
+  cursor: pointer;
 
   .bottom-strip {
     background-color: ${props => props.theme.primary};
@@ -24,11 +25,15 @@ export const MoviesCardStyle = styled.div`
   .movie-title {
     font-size: 16px;
     font-weight: 800;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: ${props => props.theme.white};
   }
 
   .movie-subdetail {
     font-size: 12px;
     color: ${props => props.theme.white};
+    text-transform: capitalize;
   }
 `

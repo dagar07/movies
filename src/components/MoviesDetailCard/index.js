@@ -13,13 +13,13 @@ class MoviesDetailCard extends Component {
     const { movie = {} } = this.props
     
     return (
-      <MoviesCardStyle imgUrl={movie.Poster.includes('http') ? movie.Poster : DUMMY_POSTER}>
+      <MoviesCardStyle imgUrl={movie.Poster.includes('http') ? movie.Poster : DUMMY_POSTER} title={movie.Title}>
         <div className='bottom-strip'>
           <div className='movie-title'>{movie.Title}</div>
-          <DisplayFlex>
-            <span className='movie-subdetail'>{movie.Year}</span>
-            &nbsp;&bull;&nbsp;
+          <DisplayFlex align='center'>
             <span className='movie-subdetail'>{movie.Type}</span>
+            &nbsp;&bull;&nbsp;
+            <span className='movie-subdetail'>{movie.Year}</span>
           </DisplayFlex>
         </div>
       </MoviesCardStyle>
