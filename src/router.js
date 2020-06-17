@@ -6,7 +6,8 @@ import { COLOR } from './styles/colors'
 
 const APP_ROUTES = {
   home: lazy(() => import('./containers/home')),
-  searchPage: lazy(() => import('./containers/SearchResultPage'))
+  searchPage: lazy(() => import('./containers/SearchResultPage')),
+  myContent: lazy(() => import('./containers/MyContent'))
 }
 
 // const RestrictedRoute = ({ component: Component, isLoggedIn, ...rest }) => {
@@ -39,6 +40,7 @@ function AppRoutes ({ history, isLoggedIn }) {
           <Switch>
             <Route exact path='/' component={APP_ROUTES.home} />
             <Route path='/search' component={APP_ROUTES.searchPage} />
+            <Route path='/mycontent' component={APP_ROUTES.myContent} />
             <Redirect to='/' />
           </Switch>
         </Suspense>

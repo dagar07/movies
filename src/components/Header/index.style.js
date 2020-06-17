@@ -12,4 +12,8 @@ export const HeaderStyle = styled(DisplayFlex)`
   left: 0;
   right: 0;
   z-index: 1000;
+
+  .header-title {
+    cursor: pointer;
+  }
 `
