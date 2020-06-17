@@ -4,7 +4,7 @@ import { MyContentStyle } from './index.style'
 import { DisplayFlex } from '../../styles/commonStyle'
 import NoContent from '../../components/NoContent'
 import { getFromCookie } from '../../utility/cookies'
-import { SAVE_MY_CONTENT } from '../../constants/cookies'
+import { SAVE_MY_CONTENT, SAVE_MY_WATCHED } from '../../constants/cookies'
 import MoviesDetailCard from '../../components/MoviesDetailCard'
 
 class MyContent extends Component {
@@ -13,6 +13,7 @@ class MyContent extends Component {
     super(props)
     this.state = {
       active: 'myContent',
+      watched: getFromCookie(SAVE_MY_WATCHED),
       myContent: getFromCookie(SAVE_MY_CONTENT)
     }
     this.tabs = [
@@ -29,13 +30,15 @@ class MyContent extends Component {
 
   handleActiveTab = (tab) => {
     this.setState({
-      active: tab
+      active: tab,
+      watched: getFromCookie(SAVE_MY_WATCHED),
+      myContent: getFromCookie(SAVE_MY_CONTENT)
     })
   }
 
   render () {
-    const { myContent = [] } = this.state
-    console.log(myContent)
+    const { myContent = [], watched = [], active } = this.state
+    console.log(watched)
     return (
       <Layout>
         <MyContentStyle>
@@ -44,7 +47,7 @@ class MyContent extends Component {
               this.tabs.map(tab => (
                 <div
                   onClick={() => this.handleActiveTab(tab.type)}
-                  className={`page-title ${(this.state.active === tab.type) && 'active'} `}
+                  className={`page-title ${(active === tab.type) && 'active'} `}
                 >
                   {tab.title}
                 </div>
@@ -52,7 +55,7 @@ class MyContent extends Component {
             }
           </DisplayFlex>
           {
-            myContent.length ? (
+            (active === 'myContent' && myContent.length) ? (
               <DisplayFlex className='content-container'>
                 {
                   myContent.map(movie =>
@@ -66,9 +69,33 @@ class MyContent extends Component {
               </DisplayFlex>
             ):
             (
-              <NoContent
-                title='You do not have any Content for watch'
-              />
+              (active === 'myContent') && (
+                <NoContent
+                  title='You do not have any Content for watch'
+                />
+              )
+            )
+          }
+          {
+            (active === 'watched' && watched.length) ? (
+              <DisplayFlex className='content-container'>
+                {
+                  watched.map(movie =>
+                    <MoviesDetailCard
+                      key={movie.Type}
+                      movie={movie}
+                      showWatched={true}
+                    />
+                  )
+                }
+              </DisplayFlex>
+            ):
+            (
+              (active === 'watched') && (
+                <NoContent
+                  title='You do not have any Content for watch'
+                />
+              )
             )
           }
         </MyContentStyle>

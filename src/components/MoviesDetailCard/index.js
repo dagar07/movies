@@ -44,7 +44,12 @@ class MoviesDetailCard extends Component {
 
   handleToWatched = () => {
     const { movie } = this.props
-    saveToCookie(SAVE_MY_WATCHED, movie)
+    let data = [movie]
+    const savedFromCookies = getFromCookie(SAVE_MY_WATCHED)
+    if (savedFromCookies) {
+      data = data.concat(savedFromCookies)
+    }
+    saveToCookie(SAVE_MY_WATCHED, data)
     this.removeMovieFromData(this.state.savedFromCookies, movie)
   }
 
