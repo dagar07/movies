@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Layout from '../../components/Layout'
 import { connect } from 'react-redux'
 import movieActions from '../../redux/movies/actions'
+import { HomeStyle } from './index.style'
+import Search from '../../components/Search'
 
 const { getMovies } = movieActions
 
@@ -15,7 +17,12 @@ class Home extends Component {
   render () {
     return (
       <Layout>
-        I am home
+        <HomeStyle>
+          <div className='home-title'>
+            Welcome To Movie World
+          </div>
+          <Search />
+        </HomeStyle>
       </Layout>
     )
   }

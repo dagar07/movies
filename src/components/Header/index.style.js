@@ -7,4 +7,7 @@ export const HeaderStyle = styled.div`
   padding: 16px 10px;
   font-weight: 800;
   font-size: 24px;
+  position: fixed;
+  left: 0;
+  right: 0;
 `
