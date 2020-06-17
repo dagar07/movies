@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { HeaderStyle } from './index.style'
+import Profile from '../Profile'
 
 class Header extends Component {
   render () {
     return (
       <HeaderStyle>
-        Movies
+        <div>Movies</div>
+        <Profile />
       </HeaderStyle>
     )
   }
