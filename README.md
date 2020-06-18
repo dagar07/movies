@@ -10,9 +10,9 @@
   - Responsive
 
 ### Screenshots
-(Home)['./public/home.png']
-(Advance Search)['./public/advance-search.png']
-(Search Result)['./public/search-result.png']
+![Home]('./public/home.png')
+![Advance Search]('./public/advance-search.png')
+![Search Result]('./public/search-result.png')
 
 ## Available Scripts
   In the project directory, you can run:
