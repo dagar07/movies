@@ -11,6 +11,13 @@ export const HomeStyle = styled(DisplayFlexCCC)`
     text-align: center;
   }
 
+  .search-by {
+    color: ${props => props.theme.white};
+    font-size: 10px;
+    margin-top: 16px;
+    cursor: pointer;
+  }
+
   @media (min-height: 320px) and (max-height: 736px) {
     height: calc(100vh - 70px);
     .home-title {

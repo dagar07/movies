@@ -5,6 +5,7 @@ import Input from '../Input'
 import Select from '../Select'
 import Button from '../Button'
 import { generateYearRange } from '../../utility/helper'
+import { DisplayRCC } from '../../styles/commonStyle'
 
 class AdvanceSearch extends Component {
   static propTypes = {
@@ -13,6 +14,12 @@ class AdvanceSearch extends Component {
 
   constructor(props) {
     super(props)
+    this.state = {
+      year: '',
+      genre: '',
+      title: ''
+    }
+
     this.genre = [
       {
         id: '',
@@ -40,14 +47,34 @@ class AdvanceSearch extends Component {
     ]
   }
 
-  handleSelectChange = (e) => {
+  handleSelectChange = (e, type) => {
     // handle search change
-    console.log(e)
+    this.setState({
+      [type]: e.target.value
+    })
+  }
+
+  handleSearchInput = (e) => {
+    this.setState({
+      title: e.target.value
+    })
   }
 
   handleSearch = () => {
     // handle search function here
-    this.props.onSearch({})
+    const obj = {}
+    if (this.state.title) {
+      obj.s = this.state.title
+    }
+
+    if (this.state.genre) {
+      obj.type = this.state.genre
+    }
+
+    if (this.state.year) {
+      obj.y = this.state.year
+    }
+    this.props.onSearch(obj)
   }
 
   render() {
@@ -59,20 +86,22 @@ class AdvanceSearch extends Component {
           className='advance-input'
         />
         <Select
-          onChange={this.handleSelectChange}
+          onChange={(e) => this.handleSelectChange(e, 'year')}
           placeholder='Select Year'
           data={this.yearRange}
           className='advance-input'
         />
         <Select
-          onChange={this.handleSelectChange}
+          onChange={(e) => this.handleSelectChange(e, 'genre')}
           placeholder='Select Genre'
           data={this.genre}
           className='advance-input'
         />
-        <Button onClic={this.handleSearch} className='advance-search-btn'>
-          Search
-        </Button>
+        <DisplayRCC>
+          <Button onClick={this.handleSearch} className='advance-search-btn'>
+            Search
+          </Button>
+        </DisplayRCC>
       </AdvanceSearchStyle>
     )
   }

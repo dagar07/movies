@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Layout from '../../components/Layout'
+import { isEmpty as lodashIsEmpty } from 'lodash/lang'
 import { connect } from 'react-redux'
 import { HomeStyle } from './index.style'
 import Search from '../../components/Search'
@@ -14,6 +15,10 @@ class Home extends Component {
 
   constructor(props) {
     super(props)
+    this.state = {
+      searchText: 'Search By Year or Genre',
+      advance: false
+    }
     this.searchData = {}
   }
 
@@ -32,12 +37,22 @@ class Home extends Component {
   }
 
   handleSearchAction = (data) => {
-    this.searchData = data
-    this.props.getMovies(data)
+    if (!lodashIsEmpty(data)) {
+      this.searchData = data
+      this.props.getMovies(data)
+    }
+  }
+
+  handleToggleSearch = () => {
+    this.setState(prevState => ({
+      advance: !prevState.advance,
+      searchText: !prevState.advance ? 'Search By Title' : 'Search By Year or Genre'
+    }))
   }
 
   render () {
     const { moviesLoader } = this.props
+    const { advance, searchText } = this.state
     return (
       <Layout>
         <Loader isLoader={moviesLoader}>
@@ -45,8 +60,16 @@ class Home extends Component {
             <div className='home-title'>
               Welcome To Movie Night
             </div>
-            <Search onSearhAction={this.handleSearchAction} />
-            <AdvanceSearch onSearch={this.handleSearchAction} />
+            {
+              advance ? <AdvanceSearch onSearch={this.handleSearchAction} /> : 
+              <Search onSearhAction={this.handleSearchAction} />
+            }
+            <div
+              className='search-by'
+              onClick={this.handleToggleSearch}
+            >
+              {searchText}
+            </div>
           </HomeStyle>
         </Loader>
       </Layout>
