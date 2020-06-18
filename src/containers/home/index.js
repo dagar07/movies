@@ -6,6 +6,7 @@ import Search from '../../components/Search'
 import Loader from '../../components/Loader'
 import movieActions from '../../redux/movies/actions'
 import { getQueryString } from '../../utility/helper'
+import AdvanceSearch from '../../components/AdvanceSearch'
 
 const { getMovies, resetMoviesStore } = movieActions
 
@@ -45,6 +46,7 @@ class Home extends Component {
               Welcome To Movie Night
             </div>
             <Search onSearhAction={this.handleSearchAction} />
+            <AdvanceSearch onSearch={this.handleSearchAction} />
           </HomeStyle>
         </Loader>
       </Layout>
