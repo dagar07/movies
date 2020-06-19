@@ -6,7 +6,7 @@
   This project setup using React CRA kit and include 
   - Redux
   - styled-componets
-  - Axios for network communicatios
+  - Axios for network communications
   - Responsive
 
 ### Screenshots
